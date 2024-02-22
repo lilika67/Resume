@@ -30,14 +30,6 @@ body {
   color: #d46e25;
 }
 
-/* .profile {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-*/
 img {
   position: absolute;
   top: 0;
@@ -205,19 +197,7 @@ a {
   padding: 5px;
 }
 
-.cards {
-  display: flex;
-  gap: 20px;
-  justify-content: flex-start;
-}
 
-.card {
-  padding: 20px;
-  border-radius: 20px;
-  min-width: 230px;
-  height: auto;
-  transition: 0.3s;
-}
 
 .card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -579,14 +559,8 @@ input[type="file" i] {
 }
 /* neww */
 /* Main container */
-.todo-app {
-  max-width: 600px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
+/* .todo-app {
+  max-width: 600px; /* Adjust as needed *
 /* Button styles */
 .edit-btn, .delete-btn {
   padding: 8px 16px;
@@ -657,4 +631,90 @@ input[type="file" i] {
   margin-top: 20px;
   border-top: 1px solid #ccc;
   padding-top: 20px;
+}
+
+
+/* Adjustments for form layout */
+.blog-form {
+  display: flex; /* Use flexbox to arrange form elements */
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start of the container */
+}
+
+.blog-form-body {
+  width: 100%; /* Ensure the body of the form takes up the full width */
+}
+
+.blog-form-body label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+.blog-form-body input,
+.blog-form-body textarea {
+  width: 100%; 
+  margin-bottom: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+
+
+/* Ensure image preview is properly sized */
+#preview-image {
+  width: 50px; 
+  height: 50px; 
+  object-fit: cover; 
+  margin-bottom: 10px; 
+}
+
+
+/* Ensure image preview is properly sized */
+.blog img {
+  width: 100%; 
+  height: auto;
+  max-height: 100px; 
+  object-fit: cover; 
+}
+
+/* Adjust the layout of the blog container to display blogs in a horizontal line */
+#blogs-container {
+  display: flex; 
+  flex-wrap: wrap; 
+}
+
+.blog {
+  width: calc(33.33% - 20px); 
+  margin: 10px; 
+}
+#blogs-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.blog {
+  width: calc(33.33% - 20px); /* Adjust as needed */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent description text from exceeding its container */
+}
+
+.blog p {
+  margin: 0 0 5px; 
+  word-wrap: break-word;/* Set the color of the text to blue */
+}
+
+.blog img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 10px; /* Add spacing between image and other content */
+}
+
+.edit-btn,
+.delete-btn {
+  display: block;
+  margin-top: 10px; /* Add spacing between buttons and other content */
 }
