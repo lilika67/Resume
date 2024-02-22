@@ -29,15 +29,15 @@ const reset = () => {
 
 const renderTasks = () => {
   tasksContainer.innerHTML = "";
-  taskData.forEach(({ id, title, date, description }) => {
+  taskData.forEach(({ id, title, date, description, image }) => {
     tasksContainer.innerHTML += `
       <div class="blog" id="${id}">
         <p><strong>Title:</strong> ${title}</p>
         <p><strong>Published date:</strong> ${date}</p>
         <p><strong>Description:</strong> ${description}</p>
+        ${image ? `<img src="${image}" alt="Blog Image" style="max-width: 100%;" />` : ''}
         <button type="button" class="edit-btn" data-id="${id}">Edit</button>
         <button type="button" class="delete-btn" data-id="${id}">Delete</button>
-        
       </div>
     `;
   });
@@ -52,12 +52,16 @@ const editTask = (id) => {
     currentTask = taskToEdit;
     taskForm.classList.remove("hidden");
   }
+  console.log("Edit button clicked for ID:", id);
+  
+  
 };
 
 const deleteTask = (id) => {
   taskData = taskData.filter((task) => task.id !== id);
   saveToLocalStorage();
   renderTasks();
+  alert("are you sure you want to delete this blog?");
 };
 
 openTaskFormBtn.addEventListener("click", () => {
@@ -99,20 +103,36 @@ taskForm.addEventListener("submit", (e) => {
   const taskObj = {
     id: currentTask.id || `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
     title: titleInput.value,
-    date: new Date,
+    date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour12: false}),
     description: descriptionInput.value,
-    image: imageInput.files[0] ? URL.createObjectURL(imageInput.files[0]) : null,
+    image: null, // Initialize image as null
+    imageFile: imageInput.files[0] || null, // Check if an image file was selected
   };
 
-  if (dataArrIndex === -1) {
-    taskData.unshift(taskObj);
+  if (taskObj.imageFile) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      taskObj.image = event.target.result; // Store the base64 encoded image data
+      if (dataArrIndex === -1) {
+        taskData.unshift(taskObj);
+      } else {
+        taskData[dataArrIndex] = taskObj;
+      }
+      saveToLocalStorage();
+      renderTasks();
+      reset();
+    };
+    reader.readAsDataURL(taskObj.imageFile); // Read the image file as a data URL
   } else {
-    taskData[dataArrIndex] = taskObj;
+    if (dataArrIndex === -1) {
+      taskData.unshift(taskObj);
+    } else {
+      taskData[dataArrIndex] = taskObj;
+    }
+    saveToLocalStorage();
+    renderTasks();
+    reset();
   }
-
-  saveToLocalStorage();
-  renderTasks();
-  reset();
 });
 
 renderTasks();

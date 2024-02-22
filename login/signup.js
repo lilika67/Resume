@@ -1,69 +1,75 @@
-const form = document.getElementById('registrationForm');
-    const errorContainer = document.getElementById('errorContainer');
-    const successContainer = document.getElementById('successContainer');
-    
+var myInput = document.getElementById("psw");
+var confirmInput = document.getElementById("cpw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-        const verifyPassword = document.getElementById('verifyPassword').value.trim();
-        
-        let errors = [];
-        
-        if (firstName.length < 2) {
-            errors.push("First name must be at least 2 characters long.");
-        }
-        if (lastName.length < 2) {
-            errors.push("Last name must be at least 2 characters long.");
-        }
-        if (!validateEmail(email)) {
-            errors.push("Email must be a valid email address.");
-        }
-        if (password.length < 6 || password.length > 12) {
-            errors.push("Password must be between 6 and 12 characters long.");
-        }
-        if (!containsSpecialCharacter(password) || !containsNumber(password) || !containsUpperCase(password) || !containsLowerCase(password)) {
-            errors.push("Password must contain at least one special character, one number, one uppercase letter, and one lowercase letter.");
-        }
-        if (password !== verifyPassword) {
-            errors.push("Passwords do not match.");
-        }
+// Function to validate password on input
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
 
-        if (errors.length > 0) {
-            errorContainer.innerHTML = '<p class="error">' + errors.join('<br>') + '</p>';
-        } else {
-            successContainer.innerHTML = '<p class="success">Registration successful!</p>';
-        }
-    });
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
 
-    function validateEmail(email) {
-        const atIndex = email.indexOf('@');
-        const dotIndex = email.lastIndexOf('.');
-        return atIndex > 0 && dotIndex > atIndex;
-    }
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
 
-    function containsSpecialCharacter(text) {
-        const specialCharacters = "!@#$%^&*()_+{}:<>?";
-        for (let i = 0; i < text.length; i++) {
-            if (specialCharacters.includes(text[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
 
-    function containsNumber(text) {
-        return /\d/.test(text);
-    }
+// Function to validate confirm password on input
+confirmInput.onkeyup = function() {
+  if(myInput.value === confirmInput.value) {
+    // Passwords match
+    confirmInput.setCustomValidity(""); // Reset the validation message
+  } else {
+    // Passwords don't match
+    confirmInput.setCustomValidity("Passwords do not match"); // Set custom validation message
+  }
+};
 
-    function containsUpperCase(text) {
-        return /[A-Z]/.test(text);
-    }
+// Function to show/hide validation message on focus/blur
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+};
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+};
 
-    function containsLowerCase(text) {
-        return /[a-z]/.test(text);
-    }
+// Function to prevent form submission if passwords don't match
+document.getElementById("myForm").onsubmit = function() {
+  if (myInput.value !== confirmInput.value) {
+    alert("Passwords do not match");
+    return false; // Prevent form submission
+  }
+};
