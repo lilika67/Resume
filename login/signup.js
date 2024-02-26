@@ -4,6 +4,7 @@ var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
+var form = document.getElementById("registration");
 
 // Function to validate password on input
 myInput.onkeyup = function() {
@@ -70,6 +71,7 @@ myInput.onblur = function() {
 document.getElementById("myForm").onsubmit = function() {
   if (myInput.value !== confirmInput.value) {
     alert("Passwords do not match");
-    return false; // Prevent form submission
+    return false; 
   }
 };
+

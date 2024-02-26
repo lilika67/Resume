@@ -1,21 +1,21 @@
-const taskForm = document.getElementById("blog-form");
+const blogForm = document.getElementById("blog-form");
 const confirmCloseDialog = document.getElementById("confirm-close-dialog");
-const openTaskFormBtn = document.getElementById("open-blog-form-btn");
-const closeTaskFormBtn = document.getElementById("close-blog-form-btn");
-const addOrUpdateTaskBtn = document.getElementById("add-or-update-blog-btn");
+const openblogFormBtn = document.getElementById("open-blog-form-btn");
+const closeblogFormBtn = document.getElementById("close-blog-form-btn");
+const addOrUpdateblogBtn = document.getElementById("add-or-update-blog-btn");
 const cancelBtn = document.getElementById("cancel-btn");
 const discardBtn = document.getElementById("discard-btn");
-const tasksContainer = document.getElementById("blogs-container");
+const blogsContainer = document.getElementById("blogs-container");
 const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 const imageInput = document.getElementById("image-input");
 
-let taskData = JSON.parse(localStorage.getItem("blogs")) || [];
-let currentTask = {};
+let blogData = JSON.parse(localStorage.getItem("blogs")) || [];
+let currentblog = {};
 
 const saveToLocalStorage = () => {
-  localStorage.setItem("blogs", JSON.stringify(taskData));
+  localStorage.setItem("blogs", JSON.stringify(blogData));
 };
 
 const reset = () => {
@@ -23,14 +23,14 @@ const reset = () => {
   dateInput.value = "";
   descriptionInput.value = "";
   imageInput.value = "";
-  taskForm.classList.add("hidden");
-  currentTask = {};
+  blogForm.classList.add("hidden");
+  currentblog = {};
 };
 
-const renderTasks = () => {
-  tasksContainer.innerHTML = "";
-  taskData.forEach(({ id, title, date, description, image }) => {
-    tasksContainer.innerHTML += `
+const renderblogs = () => {
+  blogsContainer.innerHTML = "";
+  blogData.forEach(({ id, title, date, description, image }) => {
+    blogsContainer.innerHTML += `
       <div class="blog" id="${id}">
         <p><strong>Title:</strong> ${title}</p>
         <p><strong>Published date:</strong> ${date}</p>
@@ -43,32 +43,32 @@ const renderTasks = () => {
   });
 };
 
-const editTask = (id) => {
-  const taskToEdit = taskData.find((task) => task.id === id);
-  if (taskToEdit) {
-    titleInput.value = taskToEdit.title;
-    dateInput.value = taskToEdit.date;
-    descriptionInput.value = taskToEdit.description;
-    currentTask = taskToEdit;
-    taskForm.classList.remove("hidden");
+const editblog = (id) => {
+  const blogToEdit = blogData.find((blog) => blog.id === id);
+  if (blogToEdit) {
+    titleInput.value = blogToEdit.title;
+    dateInput.value = blogToEdit.date;
+    descriptionInput.value = blogToEdit.description;
+    currentblog = blogToEdit;
+    blogForm.classList.remove("hidden");
   }
   console.log("Edit button clicked for ID:", id);
   
   
 };
 
-const deleteTask = (id) => {
-  taskData = taskData.filter((task) => task.id !== id);
+const deleteblog = (id) => {
+  blogData = blogData.filter((blog) => blog.id !== id);
   saveToLocalStorage();
-  renderTasks();
+  renderblogs();
   alert("are you sure you want to delete this blog?");
 };
 
-openTaskFormBtn.addEventListener("click", () => {
-  taskForm.classList.remove("hidden");
+openblogFormBtn.addEventListener("click", () => {
+  blogForm.classList.remove("hidden");
 });
 
-closeTaskFormBtn.addEventListener("click", () => {
+closeblogFormBtn.addEventListener("click", () => {
   const formInputsContainValues =
     titleInput.value || dateInput.value || descriptionInput.value || imageInput.value;
 
@@ -86,22 +86,22 @@ discardBtn.addEventListener("click", () => {
   reset();
 });
 
-tasksContainer.addEventListener("click", (e) => {
+blogsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("edit-btn")) {
-    const taskId = e.target.getAttribute("data-id");
-    editTask(taskId);
+    const blogId = e.target.getAttribute("data-id");
+    editblog(blogId);
   } else if (e.target.classList.contains("delete-btn")) {
-    const taskId = e.target.getAttribute("data-id");
-    deleteTask(taskId);
+    const blogId = e.target.getAttribute("data-id");
+    deleteblog(blogId);
   }
 });
 
-taskForm.addEventListener("submit", (e) => {
+blogForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
-  const taskObj = {
-    id: currentTask.id || `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+  const dataArrIndex = blogData.findIndex((item) => item.id === currentblog.id);
+  const blogObj = {
+    id: currentblog.id || `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
     title: titleInput.value,
     date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour12: false}),
     description: descriptionInput.value,
@@ -109,30 +109,30 @@ taskForm.addEventListener("submit", (e) => {
     imageFile: imageInput.files[0] || null, // Check if an image file was selected
   };
 
-  if (taskObj.imageFile) {
+  if (blogObj.imageFile) {
     const reader = new FileReader();
     reader.onload = function (event) {
-      taskObj.image = event.target.result; // Store the base64 encoded image data
+      blogObj.image = event.target.result; 
       if (dataArrIndex === -1) {
-        taskData.unshift(taskObj);
+        blogData.unshift(blogObj);
       } else {
-        taskData[dataArrIndex] = taskObj;
+        blogData[dataArrIndex] = blogObj;
       }
       saveToLocalStorage();
-      renderTasks();
+      renderblogs();
       reset();
     };
-    reader.readAsDataURL(taskObj.imageFile); // Read the image file as a data URL
+    reader.readAsDataURL(blogObj.imageFile); 
   } else {
     if (dataArrIndex === -1) {
-      taskData.unshift(taskObj);
+      blogData.unshift(blogObj);
     } else {
-      taskData[dataArrIndex] = taskObj;
+      blogData[dataArrIndex] = blogObj;
     }
     saveToLocalStorage();
-    renderTasks();
+    renderblogs();
     reset();
   }
 });
 
-renderTasks();
+renderblogs();

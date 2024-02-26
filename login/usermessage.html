@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>User Messages</title>
+    
+  </head>
+  <body>
+    <section class="header">
+      <div class="logo">
+        <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+        <h1>MY<span>BRAND</span></h1>
+      </div>
+    </section>
+    <section class="main">
+      <div class="sidebar">
+        <ul class="sidebar--items">
+          <li>
+            <a href="/login/dash.html">
+              <span class="icon icon-1"
+                ><i class="ri-layout-grid-line"></i
+              ></span>
+              <span class="sidebar--item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <!-- <span class="icon icon-2"><i class="ri-line-chart-line"></i></span> -->
+              <span class="sidebar--item">Edit Portfolio</span>
+            </a>
+          </li>
+          <li>
+            <a href="/login/usermessage.html" id="active--link user-queries">
+              <!-- <span class="icon icon-4"><i class="ri-line-chart-line"></i></span> -->
+              <span class="sidebar--item">User messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- <span class="icon icon-3"><i class="ri-line-chart-line"></i></span> -->
+              <span class="sidebar--item">Add Skills</span>
+            </a>
+          </li>
+          <li>
+            <a href="/login/addblog.html">
+              <!-- <span class="icon icon-4"><i class="ri-line-chart-line"></i></span> -->
+              <span class="sidebar--item">Add Blog</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="sidebar--bottom-items">
+          
+          <li>
+            <a href="./../index.html">
+              <span class="icon icon-5"
+                ><i class="ri-logout-box-r-line"></i
+              ></span>
+              <span class="sidebar--item">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Messages -->
+      <h2 class="h2";>Messages</h2>
+      <table id="messages-table">
+          <tr>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Message</th>
+              <th>Date</th>
+              <th>Action</th>
+              
+          </tr>
+          <!-- Insert Content here using javascript -->
+          
+      </table>
+           
+    
+      
+    </section>
+  
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const messagesTable = document.querySelector("#messages-table tbody");
+
+        const messagesStr = localStorage.getItem("messages");
+
+        if (messagesStr !== null) {
+            const messages = JSON.parse(messagesStr);
+
+            messages.forEach((message) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${message.fullName}</td>
+                    <td>${message.email}</td>
+                    <td>${message.message}</td>
+                    <td>${new Date().toLocaleDateString('en-US')}</td>
+                    <td>
+                        <span></i><i class="ri-delete-bin-line delete"></i></span>
+                        
+                    </td>
+                `;
+                messagesTable.appendChild(row);
+            });
+        }
+    });
+//function to delete message row
+document.addEventListener("click", (event) => {
+            if (event.target.classList.contains("delete")) {
+                const row = event.target.closest("tr");
+                row.remove();
+                
+            }
+        });
+
+</script>
+</html>
+</body>
