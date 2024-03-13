@@ -128,29 +128,12 @@ a {
   margin-bottom: 0;
 }
 
-.icon-0 {
-  color: #5073fb;
-}
-
-.icon-1 {
-  color: #c5bc58;
-}
-
-.icon-2 {
-  color: #a280e9;
-}
-
-.icon-3 {
-  color: #85ade3;
-}
 
 .icon-4 {
-  color: #e3a06a;
+  color: #121111;
+  align-items: center;
 }
 
-.icon-5 {
-  color: #70d7a5;
-}
 
 /* main--content */
 
@@ -376,8 +359,8 @@ a {
 }
 table {
   border-collapse: collapse;
-  width: 50% ;
-  height: 50% ;
+  width: 60% ;
+  height: 70% ;
   margin: auto;
   
   
@@ -469,7 +452,6 @@ tr:nth-child(even) {
   -khtml-opacity: 0;
   -moz-opacity: 0;
 }
-/* end of add blogs */
 
 /* responsive starts here */
 /* General styles */
@@ -507,10 +489,7 @@ body {
   width: 250px;
 }
 
-/* Main content styles */
-.main--content {
-  width: calc(100% - 250px); 
-}
+
 
 /* Button styles */
 .btn {
@@ -552,7 +531,7 @@ body {
   }
 
   .main--content {
-    width: 100%; 
+    width: 50%; 
   }
 }
 
@@ -635,7 +614,7 @@ input[type="file" i] {
 }
 
 .form-control {
-  width: 100%;
+  width: 50%;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;

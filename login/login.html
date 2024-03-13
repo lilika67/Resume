@@ -10,35 +10,35 @@
 <a  href="../index.html"><img src="../images/back.png"></a>
 
 <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
-
+<h1>Login to your account</h1>
 <div id="log" class="modal">
   
-  <form class="modal-content animate"  method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('log').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="../images/avatar.png" alt="Avatar" class="avatar">
-    </div>
+  <form class="modal-content animate"  id="loginForm" method="post">
+   
 
     <div class="container">
-      <button>Login With Google</button>
-      <p>OR</p>
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+     
+      
+      <label for="uname"><b>Email</b></label>
+      <input type="text"id="email" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" id="password" placeholder="Enter Password" name="psw" required>
         
-      <a href="./dash.html"><button type="">Login</button></a>
+      <a><button type="submit">Login</button></a>
+      <P>OR</P>
+      <button>Login With Google</button>
     
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
+    <div class="container">
        <span class="sign">You do not have account <a href="./signup.html">SignUp</a></span>
+    </div>
     
   </form>
 </div>
 
-
+<script src="./login.js"></script>
 
 </body>
 </html>

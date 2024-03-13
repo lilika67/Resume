@@ -27,6 +27,8 @@ const reset = () => {
   currentblog = {};
 };
 
+
+
 const renderblogs = () => {
   blogsContainer.innerHTML = "";
   blogData.forEach(({ id, title, date, description, image }) => {
@@ -35,7 +37,7 @@ const renderblogs = () => {
         <p><strong>Title:</strong> ${title}</p>
         <p><strong>Published date:</strong> ${date}</p>
         <p><strong>Description:</strong> ${description}</p>
-        ${image ? `<img src="${image}" alt="Blog Image" style="max-width: 100%;" />` : ''}
+        <img src = "${element.imageInput}" class="c
         <button type="button" class="edit-btn" data-id="${id}">Edit</button>
         <button type="button" class="delete-btn" data-id="${id}">Delete</button>
       </div>
@@ -64,27 +66,6 @@ const deleteblog = (id) => {
   alert("are you sure you want to delete this blog?");
 };
 
-openblogFormBtn.addEventListener("click", () => {
-  blogForm.classList.remove("hidden");
-});
-
-closeblogFormBtn.addEventListener("click", () => {
-  const formInputsContainValues =
-    titleInput.value || dateInput.value || descriptionInput.value || imageInput.value;
-
-  if (formInputsContainValues) {
-    confirmCloseDialog.showModal();
-  } else {
-    reset();
-  }
-});
-
-cancelBtn.addEventListener("click", () => confirmCloseDialog.close());
-
-discardBtn.addEventListener("click", () => {
-  confirmCloseDialog.close();
-  reset();
-});
 
 blogsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("edit-btn")) {

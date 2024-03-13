@@ -42,8 +42,16 @@ input[type=submit]:hover{
   width: 300px; 
   background-color: #f1f1f1e0;
   padding: 20px;
+  border-radius: 5%;
  
   
+}
+
+p a{
+  color: #d46e25;
+}
+p a:hover{
+  color: #000;
 }
 
 /* The message box is shown when the user clicks on the password field */

@@ -75,3 +75,12 @@ document.getElementById("myForm").onsubmit = function() {
   }
 };
 
+// Display error message
+document.getElementById('error-message').innerText = 'Sign up failed. Please try again.';
+document.getElementById('error-message').style.display = 'block';
+
+// Display success message
+document.getElementById('success-message').innerText = 'Sign up successful!';
+document.getElementById('success-message').style.display = 'block';
+
+

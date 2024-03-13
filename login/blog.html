@@ -1,136 +1,79 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title></title>
-    <link rel="stylesheet" href="../style.css">
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-        <!-- Swiper CSS -->
-        <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    
 </head>
 <body>
-
-      <!-- Header -->
-  <section id="header">
-    <div class="header container">
-      <div class="nav-bar">
-        <div class="icon">
-            <a href="../index.html">
-                <iconify-icon icon="material-symbols:arrow-back" style="color:white;" width="50" height="50"></iconify-icon>
-    </a>
-    </div>
-      
-        <div class="nav-list">
-          <div class="hamburger">
-            <div class="bar"></div>
-          </div>
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-       
-            <li><a href="./login.html" class="login-button" >login</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Header -->
     
-  <!-- Blog -->
-  <section class="blog">
-    <div class="containerc">
-     
-        <h1 class="heading">BLOGS</h1>
-
-        <div class="box-container">
-            <div class="slide-container swiper">
-            <!-- <div class="box shadow">
-
-                <div class="image">
-                    <img src="./../img/img-1.png" alt="">
-                    <h3><i class="fas fa-heart"></i> 82</h3>
-                </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-                    <a href="./viewblog.html" class="btn">read more</a>
-                </div>
-
-            </div>
-
-            <div class="box shadow">
-
-                <div class="image">
-                    <img src="./../img/img-1.png" alt="">
-                    <h3><i class="fas fa-heart"></i> 77</h3>
-                </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-                    <a href="./viewblog.html" class="btn">read more</a>
-                </div>
-
-            </div>
-
-            <div class="box shadow">
-
-                <div class="image">
-                    <img src="./../img/img-1.png" alt="">
-                    <h3><i class="fas fa-heart"></i> 52</h3>
-                </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-                    <a href="./viewblog.html" class="btn">read more</a>
-                </div>
-
-            </div>
-        </div>
-        <div class="box-container">
-            <div class="box shadow">
-
-                <div class="image">
-                    <img src="./../img/img-1.png" alt="">
-                    <h3><i class="fas fa-heart"></i> 80</h3>
-                </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-                    <a href="./viewblog.html" class="btn">read more</a>
-                </div>
-
-            </div>
-
-            <div class="box shadow">
-
-                <div class="image">
-                    <img src="./../img/img-1.png" alt="">
-                    <h3><i class="fas fa-heart"></i> 50</h3>
-                </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-                    <a href="./viewblog.html" class="btn">read more</a>
-                </div>
-
-            </div>
-
-            <div class="box shadow">
-
-                <div class="image">
-                    <img src="./../img/img-1.png" alt="">
-                    <h3><i class="fas fa-heart"></i> 40</h3>
-                </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-                    <a href="./viewblog.html" class="btn">read more</a>
-                </div>
-
-            </div> -->
+        <nav class="navbar" style="position: fixed; background-color: black;">
+            <h1 class="logo"><span class="text-secondary"></span><img src=""></h1>
             
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#blog">Blogs</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="./login/login.html">Login</a></li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+           
+        </nav>
+        <!-- Blog -->
+  
+  <div class="blog containerc">
+    <h1 class="heading">BLOG</h1>
+    <div class="box-container containerc view">
+      <div class="box shadow">
+          <div class="image">
+              <img src="../images/library.jpg" alt="">
+          </div>
+      </div>
+        <div class="content">
+            <h3>Why Lead Generation is Key for Business Growth</h3>
+            <div class="publishing-details">
+              </div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
+            </p>
+            
+            <div class="likes">
+            <button id="like">
+              <iconify-icon icon="flat-color-icons:like"></iconify-icon>
+            </button>
+            <input type="number" id="input1" value="0" />
+            <button id="like">
+            <iconify-icon icon="uil:comment" width="20" height="20"></iconify-icon>
+          </button>
+            <input type="number" id="input2" value="0" />
+          
         </div>
-    </div>
+        <form  id="blog-c"action="#" method="post">
+        <div class="comments-blog">
+          <label for="comment">Add your comment</label>
+          <textarea name="comment" id="comment" cols="60" rows="10"></textarea>
+          <div class="description_error"></div>
+          <button type="submit" class="button">Submit</button>
+        </form>
+  </div>
+ 
+</div>
+
+
+<script src="./newblog.js" defer></script>
+<script src="./index.js"></script>
+
+
+<!-- End of blog  -->
+
     
-</section>
-  <!-- End of blog -->
-  <script src="../js/blog.js"></script>
 </body>
 </html>
