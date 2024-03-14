@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Brand</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.css">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 <body id="home">
 
@@ -220,6 +221,7 @@
 
 
 <!-- Contact Me Section -->
+<div id="toast-container" class="toast-container"></div>
 <section class="contact" id="contact">
         <div class="container">
             <h5 class="title text-center m-heading text-secondary">CONTACT ME</h5>
@@ -228,15 +230,15 @@
                     <form id="form" action=" " method="POST">
                         <div class="form-group">
                             <label>FullName</label>
-                            <input type="text" name="Name" id="name" placeholder="Full Name" required>                        
+                            <input type="text" name="Name" id="name" placeholder="Full Name" >                        
                             <div class="error"></div>
                             <label>Email</label>
                             <input type="email" name="Email" id="email" placeholder="Your Email">                        
                             <div class="error"></div>
                             <label>Message</label>
-                            <textarea name="Message" id="message" placeholder="Your Message" required></textarea>
+                            <textarea name="Message" id="message" placeholder="Your Message"></textarea>
                           
-                            <button type="submit" class="btn-md">Send Message</button>
+                            <button type="submit" class="btn-md" onclick="sendMessage()">Send Message</button>
                         </div>
                     </form>
 
@@ -277,8 +279,8 @@
 
         <form id="form-2">
             <h2 style="color: white; padding-bottom:15px">Subscribe to my NewsLetters</h2>
-            <input placeholder="Email Adress">
-            <input type="Subscribe" placeholder="Subscribe">
+            <input placeholder="Email Adress" id="email">
+            <button type="subscribe" class="btn">Subscribe</button>
         </form>
 </section>
 
@@ -287,6 +289,8 @@
 <p>&copy; 2021. Designed by Kayitesi Liliane. All Rights Reserved.</p>
 </footer>
 <script src="app.js"></script> 
+<script src="/login/subscribe.js"></script>
 <script src="/login/usermessage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.js"></script>
 </body>
 </html>

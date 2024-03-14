@@ -119,3 +119,16 @@ form{
   align-items: center;
   color: #f44336;
 }
+
+/* CSS for toast messages */
+.toastify-toast {
+  border-radius: 5px;
+}
+.toastify-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.toastify-success {
+  background-color: #d4edda;
+  color: #155724;
+}

@@ -8,20 +8,18 @@ const signUp = async (user) => {
       },
       body: JSON.stringify(user),
     });
-
+    
     if (response.ok) {
-      const userData = await response.json();
-      // Assuming the response from the server contains user data, you can do something with it if needed
-      console.log(userData);
+      const responseData = await response.json();
+      showSuccessMessage(responseData.message);
       window.location.href = 'login.html';
     } else {
-      // Handle server errors or invalid responses
-      console.error('Sign up failed:', response.statusText);
-      alert('Sign up failed. Please try again.');
+      const errorData = await response.json();
+      showErrorMessage(errorData.error);
     }
   } catch (error) {
-    console.error('Error:', error);
-    alert('An error occurred. Please try again later.');
+    
+    showErrorMessage('Something went wrong');
   }
 };
 
@@ -35,7 +33,7 @@ document.getElementById('registration').addEventListener('submit', async (event)
   const password = document.getElementById('psw').value.trim();
 
   if (!email || !password || !firstName || !lastName) {
-    alert('Please enter all credentials');
+    showErrorMessage('Please enter all credentials');
     return;
   }
 

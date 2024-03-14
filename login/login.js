@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Basic input validation
     if (!email || !password) {
-      showError('Please enter both email and password.');
+      showErrorMessage('Please enter both email and password.');
       return;
     }
 
@@ -22,25 +22,48 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: JSON.stringify({ email, password })
       });
-      console.log(response);
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to login');
+        const messageData = await response.json();
+        showErrorMessage(messageData.error || 'Failed to login');
+        return;
       }
 
-      // Extract the JWT token from the response
-      const { token } = await response.json();
+      // Extract the role from the response
+      const userData = await response.json();
+      const { role } = userData;
+      console.log(userData);
 
-      // Store the token in localStorage
-      localStorage.setItem('token', token);
-
-      // Redirect to the bookmarks page upon successful login
-      window.location.href = '../index.html';
+      // Redirect based on role
+      if (role === 'admin') {
+        window.location.href = 'dash.html'; // Redirect to dashboard for admin
+      } else {
+        window.location.href = '../index.html'; // Redirect to index.html for visitors
+      }
     } catch (error) {
-
-      alert('Invalid Username or Password')
+      showErrorMessage('Error: Something went wrong during login');
     }
   });
-
 });
+
+// Function to show success message
+function showSuccessMessage(message) {
+  Toastify({
+      text: message || "Operation completed successfully!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"green",
+      className: "toastify-success"
+  }).showToast();
+}
+
+// Function to show error message
+function showErrorMessage(message) {
+  Toastify({
+      text: message || "Error: Something went wrong!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"red",
+      className: "toastify-error"
+  }).showToast();
+}

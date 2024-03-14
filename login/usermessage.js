@@ -1,45 +1,75 @@
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#form");
   const fullNameInput = document.querySelector("#name");
   const emailInput = document.querySelector("#email");
   const messageInput = document.querySelector("#message");
 
-  let messages = [];
+  const resetForm = () => {
+      fullNameInput.value = "";
+      emailInput.value = "";
+      messageInput.value = "";
+  };
 
-        // Load existing messages
-        const existingMessages = localStorage.getItem('messages')
+  form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-        if (existingMessages !== null) {
-            const messagesList = JSON.parse(existingMessages)
-            messages = [...messages, ...messagesList]
-        }
-        const reset = () => {
-            fullNameInput.value = "";
-            emailInput.value = "";
-            messageInput.value = "";
-            messages = [];
-          };
-          form.addEventListener("submit", () => {
-            reset();
+      const fullName = fullNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!fullName || !email || !message) {
+          showErrorMessage("Please fill in all fields");
+          return;
+      }
+
+      const messageData = {
+          fullName,
+          email,
+          message
+      };
+
+      try {
+          const response = await fetch('http://localhost:4000/api/v1/messages', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(messageData)
           });
-        
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
 
-            const fullName = fullNameInput.value
-            const email = emailInput.value
-            const message = messageInput.value
+          if (response.ok) {
+              const responseData = await response.json();
+              showSuccessMessage(responseData.message);
+              resetForm();
+          } else {
+              const errorData = await response.json();
+              showErrorMessage(errorData.error);
+          }
+      } catch (error) {
+          console.error("Error:", error);
+          showErrorMessage("An error occurred. Please try again later.");
+      }
+  });
+});
 
-            const clientMessage = {
-                fullName: fullName,
-                email: email,
-                message: message
-            }
+// Function to show success message
+function showSuccessMessage(message) {
+  Toastify({
+      text: message || "Operation completed successfully!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"green",
+      className: "toastify-success"
+  }).showToast();
+}
 
-            messages = [...messages, clientMessage]         
-
-            localStorage.setItem("messages", JSON.stringify(messages))
-
-            alert("Message sent successfully")
-        });
-})
+// Function to show error message
+function showErrorMessage(message) {
+  Toastify({
+      text: message || "Error: Something went wrong!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"red",
+      className: "toastify-error"
+  }).showToast();
+}

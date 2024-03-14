@@ -243,7 +243,7 @@ body {
     border-radius: 25%;
   }
   span{
-    color: black;
+    color: white;
   }
   
   
@@ -716,4 +716,17 @@ label{
 }
 .subscibe{
     color:black !important;
+}
+
+ /* CSS for toast messages */
+ .toastify-toast {
+    border-radius: 25px;
+}
+.toastify-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.toastify-success {
+    background-color: #d4edda;
+    color: #155724;
 }

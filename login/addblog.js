@@ -1,119 +1,124 @@
 const blogForm = document.getElementById("blog-form");
-const confirmCloseDialog = document.getElementById("confirm-close-dialog");
-const openblogFormBtn = document.getElementById("open-blog-form-btn");
-const closeblogFormBtn = document.getElementById("close-blog-form-btn");
-const addOrUpdateblogBtn = document.getElementById("add-or-update-blog-btn");
-const cancelBtn = document.getElementById("cancel-btn");
-const discardBtn = document.getElementById("discard-btn");
 const blogsContainer = document.getElementById("blogs-container");
 const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 const imageInput = document.getElementById("image-input");
+const authorInput = document.getElementById("author-input");
 
-let blogData = JSON.parse(localStorage.getItem("blogs")) || [];
-let currentblog = {};
+// Function to send a POST request to the backend API to add a new blog
+const addBlog = async (blogData) => {
+  try {
+    const formData = new FormData();
+    formData.append('title', blogData.title);
+    formData.append('date', blogData.date);
+    formData.append('author', blogData.author);
+    formData.append('description', blogData.description);
+    formData.append('image', blogData.imageFile);
 
-const saveToLocalStorage = () => {
-  localStorage.setItem("blogs", JSON.stringify(blogData));
+    const response = await fetch('http://localhost:4000/api/v1/blogs', {
+      method: 'POST',
+      body: {formData}
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to add blog');
+    }
+
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    console.error('Error adding blog:', error);
+    throw error;
+  }
 };
 
+// Function to reset form fields and state
 const reset = () => {
   titleInput.value = "";
   dateInput.value = "";
   descriptionInput.value = "";
+  authorInput.value = "";
   imageInput.value = "";
-  blogForm.classList.add("hidden");
-  currentblog = {};
 };
 
-
-
-const renderblogs = () => {
-  blogsContainer.innerHTML = "";
-  blogData.forEach(({ id, title, date, description, image }) => {
-    blogsContainer.innerHTML += `
-      <div class="blog" id="${id}">
-        <p><strong>Title:</strong> ${title}</p>
-        <p><strong>Published date:</strong> ${date}</p>
-        <p><strong>Description:</strong> ${description}</p>
-        <img src = "${element.imageInput}" class="c
-        <button type="button" class="edit-btn" data-id="${id}">Edit</button>
-        <button type="button" class="delete-btn" data-id="${id}">Delete</button>
-      </div>
-    `;
-  });
-};
-
-const editblog = (id) => {
-  const blogToEdit = blogData.find((blog) => blog.id === id);
-  if (blogToEdit) {
-    titleInput.value = blogToEdit.title;
-    dateInput.value = blogToEdit.date;
-    descriptionInput.value = blogToEdit.description;
-    currentblog = blogToEdit;
-    blogForm.classList.remove("hidden");
-  }
-  console.log("Edit button clicked for ID:", id);
-  
-  
-};
-
-const deleteblog = (id) => {
-  blogData = blogData.filter((blog) => blog.id !== id);
-  saveToLocalStorage();
-  renderblogs();
-  alert("are you sure you want to delete this blog?");
-};
-
-
-blogsContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("edit-btn")) {
-    const blogId = e.target.getAttribute("data-id");
-    editblog(blogId);
-  } else if (e.target.classList.contains("delete-btn")) {
-    const blogId = e.target.getAttribute("data-id");
-    deleteblog(blogId);
-  }
-});
-
-blogForm.addEventListener("submit", (e) => {
+// Event listener for form submission
+blogForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const dataArrIndex = blogData.findIndex((item) => item.id === currentblog.id);
   const blogObj = {
-    id: currentblog.id || `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
     title: titleInput.value,
-    date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour12: false}),
+    date: new Date().toISOString(),
+    author: authorInput.value,
     description: descriptionInput.value,
-    image: null, // Initialize image as null
-    imageFile: imageInput.files[0] || null, // Check if an image file was selected
+    imageFile: imageInput.files[0] || null
   };
 
-  if (blogObj.imageFile) {
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      blogObj.image = event.target.result; 
-      if (dataArrIndex === -1) {
-        blogData.unshift(blogObj);
-      } else {
-        blogData[dataArrIndex] = blogObj;
-      }
-      saveToLocalStorage();
-      renderblogs();
-      reset();
-    };
-    reader.readAsDataURL(blogObj.imageFile); 
-  } else {
-    if (dataArrIndex === -1) {
-      blogData.unshift(blogObj);
-    } else {
-      blogData[dataArrIndex] = blogObj;
-    }
-    saveToLocalStorage();
-    renderblogs();
+  try {
+    const responseData = await addBlog(blogObj);
+    console.log('Blog added successfully:', responseData);
+
+    // Reset form fields and state
     reset();
+
+    // Fetch and render updated list of blogs
+    renderBlogs();
+  } catch (error) {
+    console.error('Failed to add blog:', error);
+    
   }
 });
 
-renderblogs();
+// Function to fetch blogs from the backend API and render them on the page
+const renderBlogs = async () => {
+  try {
+    const response = await fetch('http://localhost:4000/api/v1/blogs');
+    if (!response.ok) {
+      throw new Error('Failed to fetch blogs');
+    }
+    const blogData = await response.json();
+    blogsContainer.innerHTML = ""; 
+    blogData.forEach((blog) => {
+      blogsContainer.innerHTML += `
+        <div class="blog">
+          <p><strong>Title:</strong> ${blog.title}</p>
+          <p><strong>Published date:</strong> ${blog.date}</p>
+          <p><strong>Author:</strong> ${blog.author}</p>
+          <p><strong>Description:</strong> ${blog.description}</p>
+          <img src="${blog.image}" alt="Blog Image">
+        </div>
+      `;
+    });
+  } catch (error) {
+    console.error('Error rendering blogs:', error);
+    // Handle error, e.g., display error message to user
+  }
+};
+
+
+// Event listener for form submission
+blogForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const blogObj = {
+    title: titleInput.value,
+    date: new Date().toISOString(),
+    description: descriptionInput.value,
+    author: authorInput.value, 
+    imageFile: imageInput.files[0] || null
+  };
+
+  try {
+    const responseData = await addBlog(blogObj);
+    console.log('Blog added successfully:', responseData);
+
+    // Reset form fields and state
+    reset();
+
+    // Fetch and render updated list of blogs
+    renderBlogs();
+  } catch (error) {
+    console.error('Failed to add blog:', error);
+    // Handle error, e.g., display error message to user
+  }
+});

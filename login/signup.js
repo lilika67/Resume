@@ -75,12 +75,25 @@ document.getElementById("myForm").onsubmit = function() {
   }
 };
 
-// Display error message
-document.getElementById('error-message').innerText = 'Sign up failed. Please try again.';
-document.getElementById('error-message').style.display = 'block';
+// Function to show success message
+function showSuccessMessage(message) {
+  Toastify({
+      text: message || "Operation completed successfully!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"green",
+      className: "toastify-success"
+  }).showToast();
+}
 
-// Display success message
-document.getElementById('success-message').innerText = 'Sign up successful!';
-document.getElementById('success-message').style.display = 'block';
-
+// Function to show error message
+function showErrorMessage(message) {
+  Toastify({
+      text: message || "Error: Something went wrong!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"red",
+      className: "toastify-error"
+  }).showToast();
+}
 
