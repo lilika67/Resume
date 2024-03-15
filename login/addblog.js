@@ -50,7 +50,7 @@ const renderBlogs = async () => {
       throw new Error('Failed to fetch blogs');
     }
     const blogData = await response.json();
-    showSuccessMessage(blogData.message);
+    
     // Check if blogData is undefined or null
     
 
@@ -67,7 +67,7 @@ const renderBlogs = async () => {
       `;
     });
   } catch (error) {
-    showErrorMessage('Error rendering blogs:', error);
+    // showErrorMessage('Error rendering blogs:', error);
   }
 };
 // Event listener for form submission
@@ -85,7 +85,7 @@ blogForm.addEventListener("submit", async (e) => {
   try {
     const responseData = await addBlog(blogObj);
     
-    console.log('Blog added successfully:', responseData);
+    showSuccessMessage(responseData.message);
 
     // Reset form fields
     resetForm();
@@ -105,7 +105,7 @@ renderBlogs();
 // Function to show success message
 function showSuccessMessage(message) {
   Toastify({
-      text: message || "Operation completed successfully!",
+      text: message || "You successfully added Blog!",
       duration: 3000,
       close: true,
       backgroundColor:"green",

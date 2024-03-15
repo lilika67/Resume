@@ -729,3 +729,28 @@ input[type="file" i] {
   display: block;
   margin-top: 10px; 
 }
+
+/* comming */
+
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.blog {
+  width: calc(33.33% - 20px);
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.blog p {
+  margin: 0 0 10px;
+}
+
+.blog img {
+  max-width: 100%;
+  height: auto;
+}

@@ -640,7 +640,8 @@ section{
 }
 
 .blog-cards {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width here */
+    flex: 0 0 calc(33.33% - 20px); 
+    flex-wrap: wrap;
     margin-bottom: 40px;
 }
 

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Extract the role from the response
       const userData = await response.json();
-      const { role } = userData;
+      const  {role}  = userData;
       console.log(userData);
 
       // Redirect based on role
