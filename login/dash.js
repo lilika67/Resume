@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td>${user.email}</td>
+                <td>${user.role}</td>
                 <td>${new Date(user.createdAt).toLocaleDateString('en-US')}</td>
                 <td>
                     <span><i class="ri-delete-bin-line delete"></i></span>

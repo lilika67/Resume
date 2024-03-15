@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(userData);
 
       // Redirect based on role
-      if (allUsers.role === 'admin') {
-        window.location.href = '../index.html'; 
+      if (userData.role === 'visitor') {
+        window.location.href = 'dash.html'; 
       } else {
         window.location.href = 'dash.html'; 
       }
