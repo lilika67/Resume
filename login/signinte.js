@@ -1,4 +1,3 @@
-// Modify the signUp function to send a POST request to your backend server
 const signUp = async (user) => {
   try {
     const response = await fetch('http://localhost:4000/api/v1/auth/signup', {
@@ -46,3 +45,25 @@ document.getElementById('registration').addEventListener('submit', async (event)
 
   await signUp(user);
 });
+
+// Function to show success message
+function showSuccessMessage(message) {
+  Toastify({
+      text: message || "Operation completed successfully!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"green",
+      className: "toastify-success"
+  }).showToast();
+}
+
+// Function to show error message
+function showErrorMessage(message) {
+  Toastify({
+      text: message || "Error: Something went wrong!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"red",
+      className: "toastify-error"
+  }).showToast();
+}

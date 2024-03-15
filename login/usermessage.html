@@ -89,31 +89,45 @@
 
 <script>
     
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", async() => {
     const messagesTable = document.querySelector("#messages-table tbody");
 
-    // Fetch messages from the backend
-    fetch("http://localhost:4000/api/v1/messages")
-        .then(response => response.json())
-        .then(messages => {
-            messages.forEach(message => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${message.fullName}</td>
-                    <td>${message.email}</td>
-                    <td>${message.message}</td>
-                    <td>${new Date(message.date).toLocaleDateString('en-US')}</td>
-                    <td>
-                        <span><i class="ri-delete-bin-line delete"></i></span>
-                    </td>
-                `;
-                messagesTable.appendChild(row);
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching messages:", error);
-        });
-});
+
+    try {
+      response = await fetch('http://localhost:4000/api/v1/messages',{
+        method: 'GET',
+        
+      });
+      if(!response.ok){
+        throw new Error(`failed to fetch ${response.status}`);
+
+      }
+      const responseData = await response.json();
+      console.log('response data:', responseData);
+      if(responseData.length === 0){
+        throw new Error(`no message yet`);
+      }
+      responseData.allMessages.forEach((message)=>{
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${message.fullName}</td>
+            <td>${message.email}</td>
+            <td>${message.message}</td>
+            <td>${new Date(message.Date).toLocaleDateString('en-US')}</td>
+            <td>
+                <span><i class="ri-delete-bin-line delete"></i></span>
+            </td>
+        `;
+        messagesTable.appendChild(row);
+      })
+    } catch (error) {
+        console.error('Error fetching or processing users:', error);
+        if (response) {
+            console.error('Response status:', response.status);
+        }
+    }
+  })
+   
 
     
 //function to delete message row

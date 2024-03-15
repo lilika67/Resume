@@ -1,24 +1,26 @@
-const emailInput = document.querySelector("#email");
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#form-2");
+  const email= document.querySelector("#emailz");
 
   const resetForm = () => {
-    emailInput.value = "";
+    email.value = "";
   };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = emailInput.value.trim();
-    console.log(emailInput.value);
+    let userEmail = email.value.trim();
+    
 
-    if (!email) {
-      alert(emailInput.value, "Please fill in all fields");
+    console.log(userEmail)
+    if (!userEmail) {
+      showErrorMessage("Please fill in all fields");
       return;
     }
 
     const subscriberData = {
-      email,
+      email:userEmail,
     };
 
     try {
@@ -32,15 +34,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        alert(responseData.message);
+        showSuccessMessage(responseData.message);
         resetForm();
       } else {
         const errorData = await response.json();
         alert(errorData.error);
       }
     } catch (error) {
+      
+      showErrorMessage("An error occurred. Please try again later.");
       console.error("Error:", error);
-      alert("An error occurred. Please try again later.");
     }
   });
 });
+
+// Function to show success message
+function showSuccessMessage(message) {
+  Toastify({
+      text: message || "Operation completed successfully!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"green",
+      className: "toastify-success"
+  }).showToast();
+}
+
+// Function to show error message
+function showErrorMessage(message) {
+  Toastify({
+      text: message || "Error: Something went wrong!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"red",
+      className: "toastify-error"
+  }).showToast();
+}
+

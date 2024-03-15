@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(userData);
 
       // Redirect based on role
-      if (role === 'admin') {
-        window.location.href = 'dash.html'; // Redirect to dashboard for admin
+      if (allUsers.role === 'admin') {
+        window.location.href = '../index.html'; 
       } else {
-        window.location.href = '../index.html'; // Redirect to index.html for visitors
+        window.location.href = 'dash.html'; 
       }
     } catch (error) {
       showErrorMessage('Error: Something went wrong during login');

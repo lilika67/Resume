@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const usersTable = document.querySelector("#users-table tbody");
-    let response; // Declaring response variable outside try block
+    let response;
 
     try {
-        response = await fetch('http://localhost:4000/api/v1/users', {
+       response = await fetch('http://localhost:4000/api/v1/users', {
             method: 'GET'
         });
         if (!response.ok) {
@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         const responseData = await response.json();
 
-        console.log('Response Data:', responseData); // Log the responseData for debugging
+        console.log('Response Data:', responseData); 
 
-        if (!Array.isArray(responseData) || responseData.length === 0) {
+        if ( responseData.length === 0) {
             throw new Error('No users found in response');
         }
 
-        responseData.forEach((user) => {
+        responseData.allUsers.forEach((user) => {
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${user.firstName}</td>
@@ -32,9 +32,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     } catch (error) {
         console.error('Error fetching or processing users:', error);
-        // Log the error without trying to read the response body again
         if (response) {
             console.error('Response status:', response.status);
         }
+    }
+});
+
+//function to delete message row
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete")) {
+        const row = event.target.closest("tr");
+        row.remove();
+        
     }
 });
