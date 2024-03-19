@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
-  const errorContainer = document.getElementById('errorContainer');
 
   loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!response.ok) {
         const messageData = await response.json();
-        showErrorMessage(messageData.error || 'Failed to login');
+        showErrorMessage(messageData.error);
         return;
       }
 
