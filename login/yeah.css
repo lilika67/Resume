@@ -31,9 +31,6 @@ body{
 /*styles for image*/
 img{
   display: block;
-  
-  
-     
 } 
 #image{
   max-width: 100%;
@@ -54,11 +51,7 @@ h1{
   padding-bottom: 20px;
   padding-top: 20px;
 }    
-#img-div{
-  background-color: white !important; 
-  padding-left: 235px;
-  
-}  
+
 /*styles for the tribute info*/
 #tribute-info{
  margin-bottom: 5px;
