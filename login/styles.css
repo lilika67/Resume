@@ -33,14 +33,7 @@ body {
   color: #d46e25;
 }
 
-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 
 .main {
   position: relative;
@@ -357,10 +350,12 @@ a {
   margin-top: 35px;
   border-bottom: 4px  solid #d46e25;
 }
+
+
 table {
   border-collapse: collapse;
   width: 60% ;
-  height: 70% ;
+  border: 1px solid;
   margin: auto;
   
   
@@ -368,13 +363,9 @@ table {
 
 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 8px;
 }
-tr{
-  margin: 0 0 5px; 
-  word-wrap: break-word;
-}
+
 
 tr:nth-child(even) {
   background-color: #eeac7c;

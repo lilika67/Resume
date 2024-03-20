@@ -34,6 +34,7 @@
     <div class="showcase">
         
         
+        
         <div class="showcase-content">
             <div class="showcase-text">
                 <div class="text-1">Hello, my name is</div></br>
@@ -44,6 +45,9 @@
             </div>
            
         </div> 
+        <div id="hero-img">
+            <img src="./images/lili.jpg">
+        </div>
     </div>
     
     <!-- About Section Styling -->
@@ -171,8 +175,8 @@
  <section id="blog">
     <div class="container">
         <h5 class="title text-center m-heading text-secondary">Blog</h5>
-        <div class="row">
-            <div class="blog-cards">
+        <div id="blogs-list" class="row">
+            <!-- <div class="blog-cards">
                 <div class="card">
                     <img class="card-img" src="./images/Andela-pic.jpg" alt="Card image" style="width:100%">
                     <div class="card-body">
@@ -209,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
             
 
@@ -292,5 +296,44 @@
 <script src="/login/subscribe.js"></script>
 <script src="/login/usermessage.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded",async()=>{
+    const blogs = document.getElementById("blogs-list");
+    try{
+        response = await fetch('http://localhost:4000/api/v1/blogs',{
+            method: 'GET',
+        });
+        if(!response.ok){
+            throw new Error('no response...')
+        }
+        
+        const blogData = await response.json();
+        
+        console.log(blogData)
+        blogData.allblogs.forEach((blog)=>{
+            const blogContainer = document.createElement("div");
+            blogContainer.innerHTML=`
+            <div class="blog-cards">
+                <div class="card">
+                    <img class="card-img" src="http://localhost:4000/uploads/${blog.image}" alt="Card image"  style="width:400px; height:300px">
+                    <div class="card-body">
+                        <h4 class="cards-title">${blog.title}</h4>
+                        <p style="color: rgb(142, 143, 144);">Published at:${new Date(blog.Date).toLocaleDateString('en-US')}</p>
+                        <div class="text-center">
+                            <a href="./login/blogs.html?id=${blog._id}" class="btn ">ReadMore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        blogs.appendChild(blogContainer)
+        })
+
+        
+    }catch(error){
+            console.error(error)
+    }
+  })
+</script>
 </body>
 </html>

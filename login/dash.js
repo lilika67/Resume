@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <td>${user.role}</td>
                 <td>${new Date(user.createdAt).toLocaleDateString('en-US')}</td>
                 <td>
-                    <span><i class="ri-delete-bin-line delete"></i></span>
+                <button id="delete" style="background-color:red;color:white;padding:6px;margin-left:25px;" onclick="deleteUser('${user._id}')">Delete</button>
                 </td>
             `;
             usersTable.appendChild(row);
@@ -40,10 +40,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 //function to delete message row
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("delete")) {
-        const row = event.target.closest("tr");
-        row.remove();
-        
+const deleteUser = async(id)=>{
+  
+    try{
+      const token = localStorage.getItem('token');
+      if(!token){
+        console.log("no token found");
+      }
+        const response = await fetch(`http://localhost:4000/api/v1/users/${id}`, {
+          method: 'DELETE',
+          headers: {'Content-Types': "application/json"}
+        })
+
+      if(!response.ok)  {
+        return ("failed to delete")
+      }
+      location.reload();
+
+
+    }catch(error){
+
     }
-});
+}

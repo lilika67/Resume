@@ -25,19 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         const messageData = await response.json();
         showErrorMessage(messageData.error);
-        return;
+        
       }
 
       // Extract the role from the response
       const userData = await response.json();
-      const  {role}  = userData;
+      
       console.log(userData);
 
       // Redirect based on role
-      if (userData.role === 'visitor') {
+      console.log(userData)
+      if (userData.user.role === 'admin') {
+
         window.location.href = 'dash.html'; 
       } else {
-        window.location.href = 'dash.html'; 
+        window.location.href = '../index.html'; 
       }
     } catch (error) {
       showErrorMessage('Error: Something went wrong during login');

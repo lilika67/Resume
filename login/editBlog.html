@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.css">
+</head>
+
+<body>
+    <section class="header">
+        <div class="logo">
+            <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+            <h1>MY<span>BRAND</span> </h1>
+        </div> 
+    </section>
+    <section class="main">
+        <div class="sidebar">
+            <ul class="sidebar--items">
+                <li>
+                    <a href="./dash.html" >
+                  
+                        <span class="sidebar--item">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <!-- <span class="icon icon-2"><i class="ri-line-chart-line"></i></span> -->
+                        <span class="sidebar--item">Edit Portfolio</span>
+                    </a>
+                </li> 
+                <li>
+                    <a href="">
+                      <!-- <span class="icon icon-4"><i class="ri-line-chart-line"></i></span> -->
+                      <span class="sidebar--item">User messages</span>
+                    </a>
+                  </li>
+                <li>
+                    <a href="" >
+                        <!-- <span class="icon icon-3"><i class="ri-line-chart-line"></i></span> -->
+                        <span class="sidebar--item">Add Skills</span>
+                    </a>
+                </li> 
+                <li>
+                    <a href="" id="active--link">
+                        <!-- <span class="icon icon-4"><i class="ri-line-chart-line"></i></span> -->
+                        <span class="sidebar--item">Add Blog</span>
+                    </a>
+                </li>                
+            </ul>
+            <ul class="sidebar--bottom-items">
+                <li>
+                    <a href="./../index.html">
+                        <span class="icon icon-5"><i class="ri-logout-box-r-line"></i></span>
+                        <span class="sidebar--item">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main--content">
+                  <!-- Start Blog  -->
+                  <main>
+                    <h1>Blog</h1>
+                    <div class="todo-app">
+                      <form class="blog-form hidden" id="editBlog">
+                        <div class="blog-form-header">
+                          <button id="close-blog-form-btn" class="close-blog-form-btn" type="button" aria-label="close">
+                          </button>
+                        </div>
+                        <div class="blog-form-body">
+                          <label class="blog-form-label" for="title-inputs">Title</label>
+                          <input required type="text" class="form-control" id="title-inputs" value="" />
+                          <input type="date" class="form-control" id="date-input" value="" hidden/>
+                          <div class="title_error"></div>
+                          <label class="blog-form-label" for="author-inputs">Author</label>
+                          <input required type="text" class="form-control" id="author-inputs" value="" />
+                          <label class="blog-form-label" for="description-inputs">Description</label>
+                          <textarea class="form-control" id="description-inputs" cols="30" rows="5"></textarea>
+                          <label class="task-form-label" for="image-input">Image</label>
+                          <input type="file" id="image-inputs" accept="Image/*" />
+                        </div>
+                        <div class="blog-form-footer">
+                          <button id="add-or-update-blog-btn" class="btn large-btn" type="submit">
+                           EditBlog
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </main>
+                  <div id="blogs-container"></div>
+                  
+        
+            <!-- End Blog  -->
+
+        </div>
+    </section>
+    <script src="./blog-validation.js"></script>
+    <script src="./editBlog.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.js"></script>
+
+
+</body>
+
+</html>

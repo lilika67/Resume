@@ -20,6 +20,7 @@ const addBlog = async (blogData) => {
       method: 'POST',
       body: formData
     });
+    console.log(response);
 
     if (!response.ok) {
       const errorData = await response.json();

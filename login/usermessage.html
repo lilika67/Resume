@@ -115,7 +115,8 @@
             <td>${message.message}</td>
             <td>${new Date(message.Date).toLocaleDateString('en-US')}</td>
             <td>
-                <span><i class="ri-delete-bin-line delete"></i></span>
+                
+                <button id="delete" style="background-color:red;color:white;padding:6px;margin-left:25px;">Delete</button>
             </td>
         `;
         messagesTable.appendChild(row);
@@ -131,13 +132,20 @@
 
     
 //function to delete message row
-document.addEventListener("click", (event) => {
-            if (event.target.classList.contains("delete")) {
-                const row = event.target.closest("tr");
-                row.remove();
+// document.addEventListener("click", (event) => {
+//             if (event.target.classList.contains("delete")) {
+//                 const row = event.target.closest("tr");
+//                 row.remove();
                 
-            }
-        });
+//             }
+//         });
+
+document.addEventListener("DOMContentLoaded",async()=>{
+  const deleteMessage = document.getElementById("delete");
+  
+
+  
+})
 
 </script>
 </html>

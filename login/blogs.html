@@ -60,4 +60,15 @@ Like other software engineers, I wanted a place where I can be able to improve m
 
     </main>
 </body>
+<script>
+  document.addEventListener("DOMContentLoaded",async()=>{
+    const queryParams = new URLSearchParams(window.location.search);
+    const blogId = queryParams.get("id");
+
+    blogId.allblogs.forEach((blog)=>{
+      
+    })
+    
+  })
+</script>
 </html>
