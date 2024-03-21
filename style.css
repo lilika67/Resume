@@ -704,7 +704,15 @@ section{
     font-size: 1rem;
     line-height: 1.5;
 }
-
+#no-blogs-message{
+    color: #d46e25;
+    font-size: 35px;
+    margin-left: 38%;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom:5%;
+    margin-top:5%;
+}
 label{
     color:white;
 }

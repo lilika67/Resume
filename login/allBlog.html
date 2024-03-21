@@ -74,7 +74,7 @@
               <th>Title</th>
               <th>Author</th>
               <th>PublishedDate</th>
-              <th>Description</th>
+              <th>Introduction</th>
               <th>Image</th>
               <th>Action</th>
               
@@ -114,7 +114,7 @@
             <td>${blog.title}</td>
             <td>${blog.author}</td>
             <td>${new Date(blog.publishedDate).toLocaleDateString('en-US')}</td>
-            <td>${blog.description.slice(0,190)}</td>
+            <td>${blog.introduction}</td>
             <td>
                 <img src="http://localhost:4000/uploads/${blog.image}" alt="" style="height:200px;width:100px">
 

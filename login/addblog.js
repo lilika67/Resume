@@ -5,6 +5,7 @@ const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 const imageInput = document.getElementById("image-input");
 const authorInput = document.getElementById("author-input");
+const introductionInput = document.getElementById("introduction-input");
 
 // Function to send a POST request to add a new blog
 const addBlog = async (blogData) => {
@@ -13,6 +14,7 @@ const addBlog = async (blogData) => {
     formData.append('title', blogData.title);
     formData.append('date', blogData.date);
     formData.append('author', blogData.author);
+    formData.append('introduction', blogData.introduction);
     formData.append('description', blogData.description);
     formData.append('image', blogData.imageFile);
 
@@ -39,6 +41,7 @@ const addBlog = async (blogData) => {
 const resetForm = () => {
   titleInput.value = "";
   descriptionInput.value = "";
+  introductionInput.value = "";
   authorInput.value = "";
   imageInput.value = "";
 };
@@ -63,12 +66,13 @@ const renderBlogs = async () => {
           <p><strong>Published date:</strong> ${new Date(blog.date).toLocaleDateString()}</p>
           <p><strong>Author:</strong> ${blog.author}</p>
           <p><strong>Description:</strong> ${blog.description}</p>
+          <p><strong>Introduction:</strong> ${blog.introduction}</
           <img src="${blog.image}" alt="Blog Image">
         </div>
       `;
     });
   } catch (error) {
-    // showErrorMessage('Error rendering blogs:', error);
+   console.log(error);
   }
 };
 // Event listener for form submission
@@ -79,6 +83,7 @@ blogForm.addEventListener("submit", async (e) => {
     title: titleInput.value,
     date: new Date().toISOString(),
     author: authorInput.value,
+    introduction: introductionInput.value,
     description: descriptionInput.value,
     imageFile: imageInput.files[0] || null
   };

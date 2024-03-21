@@ -6,98 +6,54 @@
 }
 /*styles for all elements in the body*/
 body{
-  background-color: #070707;
+  
   line-height: 1.2;
   font-size: 15px;
-  color: #111;
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
     'Helvetica Neue', Arial, sans-serif;
 }
 
 #title{
   font-size: 30px;
-}
-
-/*styles for main elements*/  
-#main{
-   margin: 32px 10px;
-  border-radius: 6px;
-  padding:15px;
-    background: rgba(19, 19, 19, 0.797);
-    color: white;
-  
-}
-
-/*styles for image*/
-img{
-  display: block;
-} 
-#image{
-  max-width: 100%;
-  height: auto;
-  
-}
-/*styles for descriptions*/
-h1,p{
-  display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  padding-bottom: 20px;
-  font-size: 20px;
-  
-  }
-h1{
-  padding-bottom: 20px;
-  padding-top: 20px;
-}    
-
-/*styles for the tribute info*/
-#tribute-info{
- margin-bottom: 5px;
- padding-top: 50px;
- width: 50%;
- line-height: 1.5;
- margin: auto;
-}
-/*styles for the link*/
-a{
-  color: #766492;
+  color: orange;
   font-weight: bold;
-  font-size: 15px;
-
-}
-
-#img-caption{
-  margin: 18px 5px 5px 30px;
-  /* padding: 5px; */
-  padding-bottom: 15px;
-  align-items: center;
-}
-li{
-  padding-bottom: 15px;
-}  
-
-#readings{
-  
-  font-weight: bold;
-  font-size: 20px;
   margin-bottom: 20px;
-  margin-top: 40px;
+  margin-left: 15%;
   padding-right: 20%;
   padding-left: 20%;
- 
- 
 }
-button{
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-left: 370px;
-  border-radius: 5px;
-  border: 1px solid #0a246a;
-  background-color: #b2bbd0;
+#single-blog{
+  margin: 32px 10px;
+  border-radius: 6px;
+  padding:15px;
+  background: rgba(19, 19, 19, 0.797);
+  color: white;
+  
+}
+#author{
+  font-size: 100%;
+  margin-right: 20%;
+}
+
+#blog-image img{
+  border-radius: 2%;
+  max-width: 100%;
+}
+p{
+  margin-left: 5%;
+  margin-bottom: 10px;
+}
+/*styles for image*/
+
+/*styles for the description*/
+#description{
+ margin-bottom: 5px;
+ padding-top: 50px;
+ width: 100%;
+ line-height: 1.5;
+ margin: auto;
+ word-wrap: break-word;
 }
 

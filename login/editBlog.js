@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("author-inputs").value = blogObj.author;
     document.getElementById("description-inputs").value = blogObj.description;
     
+   
+    
   } catch (error) {
     console.log(error);
   }
@@ -29,11 +31,16 @@ document
     event.preventDefault();
     const title = document.getElementById("title-inputs").value;
     const author = document.getElementById("author-inputs").value;
+    const introduction = document.getElementById("introduction-inputs").value;
     const description = document.getElementById("description-inputs").value;
+   
+   
     const updatedBlog = {
       title: title,
       author: author,
       description: description,
+      introduction:introduction
+      
     };
     console.log(updatedBlog);
     
