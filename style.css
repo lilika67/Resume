@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
 
 *{
     margin: 0;
@@ -83,8 +84,8 @@ body {
 
 #hero-img {
     position: absolute;
-    top: 50%;
-    right: 5%; 
+    top: 60%;
+    right: 23%; 
     transform: translateY(-50%);
     z-index: 1; 
 }
@@ -94,13 +95,20 @@ body {
     height: auto;
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+    right: 5%;
+    align-items:center;
 }
 
 .showcase-content {
     z-index: 2; 
     padding: 20px;
     color: rgb(15, 15, 15); 
-    text-align: center;
+    text-align: left;
+    top: 60%;
+    right: 23%;
+    margin-right: 25%;
+    font-family: 'Sofia';
+    font-size: 22px;
 }
 
 .showcase-text {

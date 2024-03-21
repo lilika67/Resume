@@ -43,18 +43,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 const deleteUser = async(id)=>{
   
     try{
-      const token = localStorage.getItem('token');
-      if(!token){
-        console.log("no token found");
-      }
+
+      
         const response = await fetch(`http://localhost:4000/api/v1/users/${id}`, {
           method: 'DELETE',
           headers: {'Content-Types': "application/json"}
         })
+        const usersData = await response.json();
+        console.log(usersData);
 
       if(!response.ok)  {
         return ("failed to delete")
       }
+      
       location.reload();
 
 
