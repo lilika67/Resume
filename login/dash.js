@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         responseData.allUsers.forEach((user) => {
             const row = document.createElement("tr");
+            const isUser = user.role === "visitor";
+
             row.innerHTML = `
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
@@ -26,7 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <td>${user.role}</td>
                 <td>${new Date(user.createdAt).toLocaleDateString('en-US')}</td>
                 <td>
-                <button id="delete" style="background-color:red;color:white;padding:6px;margin-left:25px;" onclick="deleteUser('${user._id}')">Delete</button>
+        
+                ${isUser ? `<button id="delete" style="background-color:red;color:white;padding:6px;margin-left:25px;" onclick="deleteUser('${user._id}')">Delete</button>`:""}
                 </td>
             `;
             usersTable.appendChild(row);
