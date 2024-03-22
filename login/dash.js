@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let response;
 
     try {
-       response = await fetch('http://localhost:4000/api/v1/users', {
+       response = await fetch('https://mybrand-backend-v82m.onrender.com/api/v1/users', {
             method: 'GET'
         });
         if (!response.ok) {
@@ -45,7 +45,7 @@ const deleteUser = async(id)=>{
     try{
 
       
-        const response = await fetch(`http://localhost:4000/api/v1/users/${id}`, {
+        const response = await fetch(`https://mybrand-backend-v82m.onrender.com/api/v1/users/${id}`, {
           method: 'DELETE',
           headers: {'Content-Types': "application/json"}
         })

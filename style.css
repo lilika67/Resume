@@ -599,7 +599,7 @@ section{
   }
   
   .port-cards {
-    flex: 0 0 30%; /* Each card takes up 30% of the container width */
+    flex: 0 0 30%; 
   }
   
   .port-card {
@@ -617,7 +617,8 @@ section{
   }
   
   .card-body {
-    padding: 20px;
+
+    padding: 10px;
   }
   
   .cards-title {

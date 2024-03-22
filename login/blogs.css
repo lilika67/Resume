@@ -28,8 +28,8 @@ body{
   margin: 32px 10px;
   border-radius: 6px;
   padding:15px;
-  background: rgba(19, 19, 19, 0.797);
-  color: white;
+  background: rgba(250, 246, 246, 0.797);
+  color: rgb(9, 9, 9);
   
 }
 #author{
@@ -56,4 +56,57 @@ p{
  margin: auto;
  word-wrap: break-word;
 }
+#side{
+  background-color: aqua;
+}
 
+.comments-part {
+  margin-top: 40px;
+}
+
+.comments-part h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.comment {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.comment strong {
+  color: #333;
+}
+
+ #side{
+  background-color: rgb(95, 160, 101);
+  float: right;
+  word-wrap: break-word;
+  
+}
+
+textarea {
+  width: 30%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #3f3f3f;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4a4a4b;
+  color: #0b0b0b;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #8e8f91;
+}

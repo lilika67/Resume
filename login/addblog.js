@@ -18,7 +18,7 @@ const addBlog = async (blogData) => {
     formData.append('description', blogData.description);
     formData.append('image', blogData.imageFile);
 
-    const response = await fetch('http://localhost:4000/api/v1/blogs', {
+    const response = await fetch('https://mybrand-backend-v82m.onrender.com/api/v1/blogs', {
       method: 'POST',
       body: formData
     });
@@ -49,7 +49,7 @@ const resetForm = () => {
 // Function to render blogs
 const renderBlogs = async () => {
   try {
-    const response = await fetch('http://localhost:4000/api/v1/blogs');
+    const response = await fetch('https://mybrand-backend-v82m.onrender.com/api/v1/blogs');
     if (!response.ok) {
       throw new Error('Failed to fetch blogs');
     }

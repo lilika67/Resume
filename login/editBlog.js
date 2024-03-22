@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
 
   try {
-    const response = await fetch(`http://localhost:4000/api/v1/blogs/${id}`, {
+    const response = await fetch(`https://mybrand-backend-v82m.onrender.com/api/v1/blogs/${id}`, {
       method: "GET",
     });
     if (!response.ok) {
@@ -47,7 +47,7 @@ document
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const id = urlParams.get("id");
-      const response = await fetch(`http://localhost:4000/api/v1/blogs/${id}`, {
+      const response = await fetch(`https://mybrand-backend-v82m.onrender.com/api/v1/blogs/${id}`, {
         
         method: "PUT",
         headers:{"Content-Type":"application/json"},

@@ -95,7 +95,7 @@
 
 
     try {
-      response = await fetch('http://localhost:4000/api/v1/blogs',{
+      response = await fetch('https://mybrand-backend-v82m.onrender.com/api/v1/blogs',{
         method: 'GET',
         
       });
@@ -116,7 +116,7 @@
             <td>${new Date(blog.publishedDate).toLocaleDateString('en-US')}</td>
             <td>${blog.introduction}</td>
             <td>
-                <img src="http://localhost:4000/uploads/${blog.image}" alt="" style="height:200px;width:100px">
+                <img src="https://mybrand-backend-v82m.onrender.com/uploads/${blog.image}" alt="" style="height:200px;width:100px">
 
             </td>
             <td>
@@ -146,7 +146,7 @@ const deleteBlog = async(id)=>{
         if(!token){
           console.log("no token found");
         }
-          const response = await fetch(`http://localhost:4000/api/v1/blogs/${id}`, {
+          const response = await fetch(`https://mybrand-backend-v82m.onrender.com/api/v1/blogs/${id}`, {
             method: 'DELETE',
             headers: {'Content-Types': "application/json"}
           })
