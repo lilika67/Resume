@@ -745,3 +745,10 @@ input[type="file" i] {
   max-width: 100%;
   height: auto;
 }
+#no-blog,#no-message{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+    
+}

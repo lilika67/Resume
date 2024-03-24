@@ -13,7 +13,7 @@
 </head>
 <body id="home">
 
-    <div class="topnav" id="myTopnav" style="position: fixed; background-color: black;">
+    <!-- <div class="topnav" id="myTopnav" style="position: fixed; background-color: black;">
         <h1 class="logo"><span class="text-secondary"></span><img src=""></h1>
         
         
@@ -31,7 +31,36 @@
             
             
        
-    </div>
+    </div> -->
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
+            <li><a href="./login/login.html">Register</a></li>
+            
+
+        </ul>
+        <ul>
+            <li><a  class="active"><span>KL</span>BRAND</a></li>
+            <li class="hideOnMobile"><a href="#home">Home</a></li>
+            <li class="hideOnMobile"><a href="#about">About Us</a></li>
+            <li class="hideOnMobile"><a href="#skills">Skills</a></li>
+            <li class="hideOnMobile"><a href="#portfolio">Portfolio</a></li>
+            <li class="hideOnMobile"><a href="#blog">Blog</a></li>
+            <li class="hideOnMobile"><a href="#contact">Contact Us</a></li>
+            <li class="hideOnMobile"><a href="#subscribe">Subscribe</a></li>
+            <li class="hideOnMobile"><a href="./login/login.html">Register</a></li>
+            <li class="menu"onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+        </ul>
+    </nav>
+
     <div class="showcase">
         
         
@@ -60,7 +89,7 @@
             <div class="about-content">
                 <div class="photo" style="border-radius: 45px";>
                     <img src="./images/sifa.jpeg">
-                </div>
+                </div> 
                 <div class="column right">
                     <div class="text">I'm Kayitesi Liliane</div>
                     <p>  I’m a software Engineer.
@@ -183,7 +212,7 @@
                 No blogs available..
                 
               </div>
-            <!-- <div class="blog-cards">
+            <div class="blog-cards">
                 <div class="card">
                     <img class="card-img" src="./images/Andela-pic.jpg" alt="Card image" style="width:100%">
                     <div class="card-body">
@@ -220,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div> 
         </div>
             
 

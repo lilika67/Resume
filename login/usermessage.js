@@ -52,6 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function deleteMessage(){
+    
+}
+
 // Function to show success message
 function showSuccessMessage(message) {
   Toastify({
