@@ -689,6 +689,7 @@ nav li:first-child {
   margin-right: auto;
   background-color: #d46e25;
   border-radius: 25%;
+  font-weight: bold;
 }
 .sidebar {
   position: fixed;
