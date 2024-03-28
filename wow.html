@@ -1,0 +1,104 @@
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <div class="work">
+      <img src="./images/html.png" />
+      <div class="layer">
+        <h3>HTML:</h3>
+        <p>
+          HyperText Markup Language or HTML is the standard markup language for
+          documents designed to be displayed in a web browser.
+        </p>
+      </div>
+    </div>
+
+    <div class="work">
+      <img src="./images/html.png" />
+      <div class="layer">
+        <h3>HTML:</h3>
+        <p>
+          HyperText Markup Language or HTML is the standard markup language for
+          documents designed to be displayed in a web browser.
+        </p>
+      </div>
+      <div class="work">
+        <img src="./images/css.png" />
+        <div class="layer">
+          <h3>Css:</h3>
+          <p>
+            stands for Cascading Style Sheets· CSS describes how HTML elements
+            are to be displayed on screen, paper, or in other media .
+          </p>
+        </div>
+      </div>
+      <div class="work">
+        <img src="./images/js.png" />
+        <div class="layer">
+          <h3>Javascript:</h3>
+          <p>
+            JS, is a programming language that is one of the core technologies
+            of the World Wide Web, alongside HTML and CSS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="work">
+      <img src="./images/html.png" />
+      <div class="layer">
+        <h3>HTML:</h3>
+        <p>
+          HyperText Markup Language or HTML is the standard markup language for
+          documents designed to be displayed in a web browser.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="mySlides fade"></div>
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+<br />
+
+<div style="text-align: center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function currentSlide(n) {
+    showSlides((slideIndex = n));
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" activeslide", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " activeslide";
+  }
+</script>

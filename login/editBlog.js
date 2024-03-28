@@ -53,7 +53,7 @@ document
         headers:{"Content-Type":"application/json"},
         body: JSON.stringify(updatedBlog)
       });
-      console.log(response);
+      showSuccessMessage(response.message);
       if(!response.ok){
         console.log('failed to update');
       }
@@ -66,3 +66,26 @@ document
         console.log(error);
     }
   });
+
+  // Function to show success message
+function showSuccessMessage(message) {
+  Toastify({
+      text: message || "You successfully added Blog!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"green",
+      className: "toastify-success"
+  }).showToast();
+}
+
+// Function to show error message
+function showErrorMessage(message) {
+  Toastify({
+      text: message || "Error: Something went wrong!",
+      duration: 3000,
+      close: true,
+      backgroundColor:"red",
+      className: "toastify-error"
+  }).showToast();
+}
+

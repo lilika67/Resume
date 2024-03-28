@@ -17,10 +17,10 @@ body{
   font-size: 30px;
   align-items: center;
   justify-content: center;
-  color: orange;
+  color: rgb(1, 1, 1);
   font-weight: bold;
   margin-bottom: 20px;
-  margin-left: 15%;
+  margin-left: 15px;
   padding-right: 20%;
   padding-left: 20%;
 }
@@ -67,19 +67,22 @@ p{
 .comments-part h2 {
   font-size: 20px;
   margin-bottom: 20px;
-  color: black;
+  color: chocolate;
 }
 
-.comment {
+.comments {
   margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   font-size: 14px;
-  color: #666;
+  word-wrap: break-word;
+  margin-left: 24px;
+  margin-right: 24px;
+  
 }
 
-.comment strong {
-  color: #333;
+.comment {
+  color: #333 !important;
 }
 
  #side{
@@ -106,7 +109,59 @@ button {
   cursor: pointer;
   font-size: 16px;
 }
-
+.author{
+  font-weight: bold;
+}
+.date{
+  font-style: italic;
+}
+.add{
+  text-decoration: underline;
+}
 button:hover {
   background-color: #8e8f91;
+}
+/* likes */
+.count{
+  color:#0b0b0b
+}
+.rating-container{
+  display: flex;
+  justify-content: end;
+  padding: 12px 0;
+}
+.likes{
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+.likes:not(:last-child){
+  margin-right: 12px;
+}
+.like-icon{
+  margin-right: 6px;
+  cursor: pointer;
+  color:rgb(10, 11, 11)
+}
+.selected > .like-ico,
+.selected > .count{
+    color:rgb(119, 255, 0);
+}
+
+.like-icon:hover{
+  color:rgb(119, 255, 0);
+}
+
+/* likes end */
+@media screen and (max-width: 768px) {
+  #title{
+    color:rgb(8, 9, 9);
+    font-size: 12px;
+    margin:0;
+        }
+  .comment{
+    color:#3b3636;
+    word-wrap: break-word;
+    font-size: 15px;
+  }      
 }

@@ -10,20 +10,13 @@
   outline: none;
 }
 
-/* Smooth scroll */
-/* html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-} */
-/* body {
-  width: 100%;
-} */
 
 .container {
   max-width: 1300px;
   padding: 0px 100px;
   margin: auto;
   z-index: 10;
+  
 }
 .text-secondary {
   color: white;
@@ -158,6 +151,7 @@
   border-radius: 25px;
   @media (min-width: 768px) {
     width: 400px;
+    
   }
 }
 
@@ -679,13 +673,13 @@ nav li {
   align-items: center;
   color: rgb(245, 242, 242);
 }
-nav a:hover {
+.nav a:hover {
   background-color: #ddd;
   color: #d46e25;
-  border-radius: 25%;
-  padding: 10px;
+  padding: 5px;
+  border-radius: 23%;
 }
-nav li:first-child {
+.nav li:first-child {
   margin-right: auto;
   background-color: #d46e25;
   border-radius: 25%;
@@ -696,7 +690,7 @@ nav li:first-child {
   top: 0;
   right: 0;
   height: 100vh;
-  width: 250px;
+  width: 100%;
   z-index: 999;
   background-color: rgb(9, 8, 8);
   backdrop-filter: blur(10px);
@@ -735,5 +729,73 @@ span {
 
 svg{
   background-color: #f2f7f3;
+  }
+  /* comment part */
+
+  .comments-part {
+    margin-top: 20px;
+    
+  }
   
-}
+  .comments-part h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  #comment-form {
+    margin-bottom: 20px;
+    
+  }
+  
+  #authors {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #comment {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #add-comment-btn {
+    background-color: #45484b;
+    color: #0b0a0a;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #add-comment-btn:hover {
+    background-color: #0b0a0a;
+    color:#45484b;
+  }
+  
+  #comment-container {
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  
+  }
+  .user{
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 25px;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+  }
+  
+  .comment div {
+    margin-bottom: 5px;
+  }
+  
+  .comment div:last-child {
+    margin-bottom: 0;
+  }
+  
+
+ 

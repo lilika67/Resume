@@ -24,9 +24,7 @@
         <ul class="sidebar--items">
           <li>
             <a href="./dash.html">
-              <span class="icon icon-1"
-                ><i class="ri-layout-grid-line"></i
-              ></span>
+      
               <span class="sidebar--item">Dashboard</span>
             </a>
           </li>
@@ -69,19 +67,21 @@
       </div>
       <!-- blogs -->
       <h2 class="h2">Blogs</h2>
+      <div id="blog-ta">
       <table id="blogs-table">
           <tr>
               <th>Title</th>
               <th>Author</th>
-              <th>PublishedDate</th>
+              <th class="pic">PublishedDate</th>
               <th>Introduction</th>
-              <th>Image</th>
+              <th class="pic">Image</th>
               <th>Action</th>
               
           </tr>
           <!-- Insert Content here using javascript -->
           
       </table>
+    </div>
          <div id="no-blog" style="display: none;">
           No blog available....
          </div>  
@@ -120,9 +120,9 @@
         row.innerHTML = `
             <td>${blog.title}</td>
             <td>${blog.author}</td>
-            <td>${new Date(blog.publishedDate).toLocaleDateString('en-US')}</td>
+            <td class="pic">${new Date(blog.publishedDate).toLocaleDateString('en-US')}</td>
             <td>${blog.introduction}</td>
-            <td>
+            <td class="pic">
                 <img src="https://mybrand-backend-v82m.onrender.com/uploads/${blog.image}" alt="" style="height:200px;width:100px">
 
             </td>

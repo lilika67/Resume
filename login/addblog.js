@@ -55,6 +55,7 @@ const renderBlogs = async () => {
     }
     const blogData = await response.json();
     
+    
     // Check if blogData is undefined or null
     
 

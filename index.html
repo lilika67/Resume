@@ -13,41 +13,22 @@
 </head>
 <body id="home">
 
-    <!-- <div class="topnav" id="myTopnav" style="position: fixed; background-color: black;">
-        <h1 class="logo"><span class="text-secondary"></span><img src=""></h1>
-        
-        
-            <a  class="active"><span>KL</span>BRAND</a>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#blog">Blogs</a>
-            <a href="#contact">Contact</a>
-            <a href="./login/login.html">Login</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-              </a>
-            
-            
-       
-    </div> -->
     <nav>
         <ul class="sidebar">
             <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
             
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#subscribe">Subscribe</a></li>
-            <li><a href="./login/login.html">Register</a></li>
+            
+            <li onclick="hideSidebar()"><a href="/index.html#about">About Us</a></li>
+            <li onclick="hideSidebar()"><a href="/index.html#skills">Skills</a></li>
+            <li onclick="hideSidebar()"><a href="/index.html#portfolio">Portfolio</a></li>
+            <li onclick="hideSidebar()"><a href="/index.html#blog">Blog</a></li>
+            <li onclick="hideSidebar()"><a href="/index.html#contact">Contact Us</a></li>
+            <li onclick="hideSidebar()"><a href="/index.html#subscribe">Subscribe</a></li>
+            <li onclick="hideSidebar()"><a href="./login/login.html">Register</a></li>
             
 
         </ul>
-        <ul>
+        <ul class="nav">
             <li><a  class="active"><span style="color: black;">KL</span>BRAND</a></li>
             <li class="hideOnMobile"><a href="#home">Home</a></li>
             <li class="hideOnMobile"><a href="#about">About Us</a></li>
@@ -57,7 +38,7 @@
             <li class="hideOnMobile"><a href="#contact">Contact Us</a></li>
             <li class="hideOnMobile"><a href="#form-2">Subscribe</a></li>
             <li class="hideOnMobile"><a href="./login/login.html">Register</a></li>
-            <li class="menu"onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            <li class="menu"onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
         </ul>
     </nav>
 
@@ -212,7 +193,7 @@
                 No blogs available..
                 
               </div>
-            <div class="blog-cards">
+            <!-- <div class="blog-cards">
                 <div class="card">
                     <img class="card-img" src="./images/Andela-pic.jpg" alt="Card image" style="width:100%">
                     <div class="card-body">
@@ -223,9 +204,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="blog-cards">
+            <!-- <div class="blog-cards">
                 <div class="card ">
                     <img class="card-img" src="images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg" alt="Card image" style="width:100%">
                     <div class="card-body">
@@ -236,9 +217,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="blog-cards">
+            <!-- <div class="blog-cards">
                 <div class="card">
                     <img class="card-img" src="images/library.jpg" alt="Card image" style="width:100%">
                     <div class="card-body">
@@ -249,11 +230,11 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>  -->
         </div>
             
 
-        </div>
+    </div>
 </section>  
 
 
@@ -360,7 +341,7 @@
             blogContainer.innerHTML=`
             <div class="blog-cards">
                 <div class="card">
-                    <img class="card-img" src="https://mybrand-backend-v82m.onrender.com/uploads/${blog.image}" alt="Card image"  style="width:400px; height:300px; flex: 0 0 30%; ">
+                    <img class="card-img" src="https://mybrand-backend-v82m.onrender.com/uploads/${blog.image}" alt="Card image"  style="max-width:400px; height:300px; flex: 0 0 30%; ">
                     <div class="card-body">
                         <h4 class="cards-title">${blog.title}</h4>
                         <p style="color: rgb(142, 143, 144);">Published at: ${new Date(blog.publishedDate).toLocaleDateString('en-US')}</p>
