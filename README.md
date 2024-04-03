@@ -3,6 +3,6 @@ This portfolio website explains more about me
 
 # My Awesome Project
 
-[![HoundCI](https://img.shields.io/badge/reviewed%20by-Hound-Electric Purple.svg)](https://houndci.com)
+[![HoundCI](https://img.shields.io/badge/reviewed%20by-Hound-electricpurple.svg)](https://houndci.com)
 
 
